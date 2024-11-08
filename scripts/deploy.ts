@@ -39,14 +39,17 @@ async function deployScript() {
   );
   console.log(`Please scan the QR code below to deploy the contract:`);
 
- 
-    const qsCode = qs.stringify({
-        text: "Deploy contract",
-        amount: toNano(0.05).toString(10),
-        init: stateInitCell.toBoc({ idx: false }).toString("base64"),
-      });
-      const link = `ton://transfer/${address.toString({ testOnly: true })}?${qsCode}`;
-
+  let link =
+    `https://tonhub.com/transfer/` +
+    address.toString({
+      testOnly: false,
+    }) +
+    "?" +
+    qs.stringify({
+      text: "Deploy contract",
+      amount: toNano(1).toString(10),
+      init: stateInitCell.toBoc({ idx: false }).toString("base64"),
+    });
 
   qrcode.generate(link, { small: true }, (code) => {
     console.log(code);
@@ -54,5 +57,3 @@ async function deployScript() {
 }
 
 deployScript();
-
-
