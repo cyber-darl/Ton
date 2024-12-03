@@ -14,7 +14,7 @@ const const::min_tons_for_storage = 10000000; ;; 0.01 TON
 () save_data(int counter_value, slice recent_sender, slice owner_address) impure inline {
   set_data(begin_cell()
     .store_uint(counter_value, 32) ;; counter_value
-    .store_slice(recent_sender) ;; the most recent sender
+    .store_slice(recent_sender) ;; the most recent sende 
     .store_slice(owner_address) ;; owner_address
     .end_cell());
 }
